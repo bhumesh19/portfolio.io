@@ -302,7 +302,7 @@ body::selection {
 
 .hoodie-guy {
   position: absolute;
-  background:#2c3e50;;
+  background: url(assets/Hoodie-guy.png);
   top: 100px;
   height: 550px;
   width: 550px;
