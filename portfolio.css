@@ -274,7 +274,7 @@ body::selection {
   margin: 20px 0;
 }
 
-/* .body-tail {
+.body-tail {
   display: flex;
   align-items: start;
   padding: 100px 0 0 0;
@@ -349,7 +349,7 @@ body::selection {
   top: 12px;
   left: 12px;
   object-fit: cover;
-} */
+}
 
 /* ----------INTRODUCTION---------- */
 #introduction {
@@ -429,7 +429,7 @@ body::selection {
   text-decoration: underline;
   text-underline-offset: 5px;
 }
-/* 
+
 .introduction-text {
   display: block;
   min-width: 50%;
@@ -455,7 +455,7 @@ body::selection {
   font-size: 18px;
   color: #7c7d81;
   font-weight: 600;
-} */
+}
 
 /* ----------LATEST WORKS---------- */
 #latest-works {
