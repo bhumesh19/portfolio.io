@@ -302,7 +302,7 @@ body::selection {
 
 .hoodie-guy {
   position: absolute;
-  background: url('https://cdn-icons-png.flaticon.com/512/1055/1055687.png');
+  background:#2c3e50;;
   top: 100px;
   height: 550px;
   width: 550px;
