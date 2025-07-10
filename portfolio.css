@@ -296,8 +296,8 @@ body::selection {
   border-radius: 50%;
   width: 550px;
   height: 550px;
-  z-index: 9;
-  box-shadow: 0 0 20px #00000080;
+   box-shadow: 0 0 60px #61dafb55;
+  z-index: 1;
 }
 
 .hoodie-guy {
@@ -352,6 +352,11 @@ body::selection {
   top: 12px;
   left: 12px;
   object-fit: cover;
+}
+.circle span img:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px #61dafb;
+  cursor: pointer;
 }
 
 /* ----------INTRODUCTION---------- */
