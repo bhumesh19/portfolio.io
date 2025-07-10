@@ -302,12 +302,13 @@ body::selection {
 
 .hoodie-guy {
   position: absolute;
-  background: url('https://cdni.iconscout.com/illustration/premium/thumb/software-developer-2761736-2309901.png')
-    center/cover no-repeat;
+  background: url('https://cdn-icons-png.flaticon.com/512/1055/1055687.png')
+    center/contain no-repeat;
   top: 100px;
   width: 550px;
   height: 550px;
 }
+
 
 
 
