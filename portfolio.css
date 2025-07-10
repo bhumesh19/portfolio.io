@@ -294,8 +294,8 @@ body::selection {
 .background-circle {
   background: radial-gradient(circle, #2c2f3a, #1b1c20);
   border-radius: 50%;
-  width: 550px;
-  height: 550px;
+  width: 600px;
+  height: 600px;
    box-shadow: 0 0 60px #61dafb55;
   z-index: 1;
 }
