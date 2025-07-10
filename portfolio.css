@@ -302,12 +302,13 @@ body::selection {
 
 .hoodie-guy {
   position: absolute;
-  background: url(assets/Hoodie-guy.png);
+  background: url('https://cdn.dribbble.com/users/1787323/screenshots/5974432/media/92aebdd0c6242ad3bc60b51d2b68f3e9.png');
   top: 100px;
   height: 550px;
   width: 550px;
   background-size: cover;
 }
+
 
 .circle {
   position: relative;
