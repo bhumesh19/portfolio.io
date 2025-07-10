@@ -292,7 +292,7 @@ body::selection {
 }
 
 .background-circle {
-  background: #28292d;
+  background: radial-gradient(circle, #2c2f3a, #1b1c20);
   border-radius: 50%;
   width: 550px;
   height: 550px;
