@@ -937,3 +937,326 @@ body::selection {
   color: #3b5998;
 }
 
+/* ================== RESPONSIVE STYLES (mobile-first) ================== */
+/* These overrides come last so they take precedence on small screens.
+   Adjust breakpoints or values to taste. */
+
+/* Make media and layout fluid by default */
+img, svg, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* prevent overflow due to long words/links */
+* { min-width: 0; }
+
+/* Reduce heavy shadows & animations on very small devices */
+@media (max-width: 600px) {
+  /* Header */
+  #header {
+    padding: 12px 16px;
+    gap: 12px;
+  }
+  .title-first-name, .title-last-name {
+    font-size: 18px;
+  }
+  .navbar-menu {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .navbar-menu li {
+    padding: 0 8px;
+  }
+  /* Hide detailed social items in header to save space */
+  .social-media { display: none; }
+
+  /* Content layout stacks vertically */
+  #content-body {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 60px 20px 40px 20px;
+    height: auto;
+    margin-bottom: 6vh;
+    max-height: none;
+    gap: 20px;
+  }
+
+  .developer-intro p {
+    margin-right: 0;
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  .body-title h1 {
+    font-size: 28px;
+    line-height: 36px;
+    padding-top: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .body-title p {
+    font-size: 14px;
+    color: #cacaca;
+  }
+
+  .body-title a {
+    font-size: 14px;
+  }
+
+  /* Scale down the big decorative circle & hoodie */
+  .background-circle {
+    width: 280px;
+    height: 280px;
+    box-shadow: 0 0 30px #61dafb33;
+  }
+
+  .hoodie-guy {
+    top: 30px;
+    height: 220px;
+    width: 220px;
+    background-size: contain;
+    background-position: center;
+  }
+
+  /* Skills circle: make it wrap into a small grid */
+  .circle {
+    position: static;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    transform: none;
+    animation: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .circle span {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    transform: none;
+    box-shadow: 0 0 6px #00000080;
+  }
+
+  .circle span img {
+    top: 8px;
+    left: 8px;
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Introduction section stacks */
+  #introduction {
+    flex-direction: column;
+    padding: 40px 20px;
+    min-height: auto;
+    gap: 24px;
+  }
+
+  .cards {
+    min-width: 100%;
+    width: 100%;
+  }
+
+  .design-card {
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  .introduction-text {
+    min-width: 100%;
+    padding-right: 0;
+  }
+
+  .introduction-text h2 { font-size: 22px; }
+  .introduction-text p { font-size: 15px; line-height: 1.4; }
+
+  /* Latest works: vertical stack */
+  #latest-works {
+    padding: 40px 20px;
+    flex-direction: column;
+    gap: 18px;
+    min-height: auto;
+  }
+
+  .project-card {
+    min-width: 100%;
+    min-height: auto;
+  }
+
+  .project-img-1, .project-img-2, .project-img-3 {
+    width: 100%;
+    height: auto;
+    transform: none !important;
+    box-shadow: none !important;
+    position: static;
+  }
+
+  .project-card .title h3 { font-size: 20px; }
+
+  /* Footer stacks and shrinks padding */
+  #footer {
+    flex-direction: column;
+    padding: 40px 20px;
+    height: auto;
+    gap: 20px;
+  }
+
+  .footer-left, .footer-right {
+    width: 100%;
+    padding: 0;
+  }
+
+  .footer-right { padding: 10px 0 0 0; }
+
+  .footer-email-intro h3 { font-size: 20px; }
+}
+
+/* Medium devices / tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+  #header {
+    padding: 16px 28px;
+  }
+  .title-first-name, .title-last-name {
+    font-size: 20px;
+  }
+  .social-media { display: none; }
+
+  #content-body {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 40px;
+    gap: 20px;
+    height: auto;
+    max-height: none;
+  }
+
+  .body-title h1 {
+    font-size: 34px;
+    line-height: 42px;
+  }
+
+  .background-circle {
+    width: 420px;
+    height: 420px;
+    box-shadow: 0 0 40px #61dafb44;
+  }
+
+  .hoodie-guy {
+    top: 40px;
+    height: 360px;
+    width: 360px;
+    background-size: contain;
+  }
+
+  .circle {
+    position: relative;
+    top: 220px;
+    left: 110px;
+    width: 160px;
+    height: 160px;
+    transform: none;
+    animation: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .circle span {
+    width: 64px;
+    height: 64px;
+    transform: none;
+  }
+  .circle span img {
+    top: 10px;
+    left: 10px;
+    width: 44px;
+    height: 44px;
+  }
+
+  #introduction {
+    padding: 60px 40px;
+  }
+
+  .introduction-text {
+    min-width: 50%;
+    padding-right: 60px;
+  }
+
+  #latest-works {
+    padding: 60px 40px;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .project-card {
+    min-width: 45%;
+  }
+
+  #footer {
+    padding: 60px 40px;
+    height: auto;
+  }
+
+  .footer-right {
+    padding: 80px 0 15px 0;
+  }
+}
+
+/* Larger screens / desktops */
+@media (min-width: 1025px) {
+  /* ensure original desktop layout preserved but minor fluid adjustments */
+  #header { padding: 20px 48px; }
+  .title-first-name, .title-last-name { font-size: 24px; }
+
+  #content-body {
+    padding: 100px 0 0 100px;
+    height: 90vh;
+  }
+
+  .background-circle {
+    width: 600px;
+    height: 600px;
+  }
+
+  .hoodie-guy {
+    height: 550px;
+    width: 550px;
+    top: 100px;
+  }
+
+  .circle {
+    position: relative;
+    top: 400px;
+    left: 220px;
+    animation: animateCircle 40s linear infinite;
+  }
+
+  #introduction { padding: 100px; }
+
+  #latest-works {
+    padding: 100px;
+    flex-direction: row;
+  }
+
+  #footer {
+    padding: 100px;
+    height: 100vh;
+  }
+}
+
+/* Small improvement: reduce animation motion for prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .circle, .hoodie-guy, * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
