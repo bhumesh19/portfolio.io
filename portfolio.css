@@ -10,8 +10,8 @@
 }
 
 body {
-    background-color: #0a0a0a;
-    color: #fff;
+    background-color: #ffffff;
+    color: #333;
     scroll-behavior: smooth;
 }
 
@@ -32,9 +32,9 @@ header {
     padding: 20px 50px;
     position: sticky;
     top: 0;
-    background-color: rgba(10, 10, 10, 0.9);
+    background-color: #f8f9fa;
     z-index: 1000;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #ddd;
 }
 
 .navbar-title {
@@ -49,11 +49,11 @@ header {
 }
 
 .navbar-title .title-first-name {
-    color: #00d4ff;
+    color: #1e90ff;
 }
 
 .navbar-title .title-last-name {
-    color: #fff;
+    color: #333;
 }
 
 .social-media {
@@ -69,7 +69,7 @@ header {
 }
 
 .social-media li:hover {
-    color: #00d4ff;
+    color: #1e90ff;
 }
 
 .social-media i {
@@ -92,7 +92,7 @@ header {
 }
 
 .developer-intro p {
-    color: #00d4ff;
+    color: #1e90ff;
     font-weight: 500;
     font-size: 20px;
     margin-bottom: 10px;
@@ -106,14 +106,23 @@ header {
 
 .body-title p {
     font-size: 18px;
-    color: #aaa;
+    color: #555;
 }
 
 /* ---------- SKILLS GRID ---------- */
+.body-part-2 {
+    flex: 1;
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
 .skills-title {
     text-align: center;
     font-size: 32px;
-    color: #00d4ff;
+    color: #1e90ff;
     margin-bottom: 40px;
     font-weight: 600;
 }
@@ -124,16 +133,17 @@ header {
     gap: 20px;
     justify-items: center;
     align-items: center;
+    width: 100%;
+    max-width: 900px;
 }
 
 .skill-card {
-    background-color: #1a1a1a;
+    background-color: #f0f4f8;
     padding: 20px;
     border-radius: 15px;
     text-align: center;
     width: 120px;
     transition: transform 0.3s, box-shadow 0.3s;
-    cursor: default;
 }
 
 .skill-card img {
@@ -146,13 +156,13 @@ header {
 .skill-card span {
     display: block;
     margin-top: 5px;
-    color: #fff;
+    color: #333;
     font-weight: 500;
 }
 
 .skill-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 0 20px #00d4ff;
+    box-shadow: 0 0 15px rgba(30, 144, 255, 0.6);
 }
 
 .skill-card:hover img {
@@ -166,7 +176,7 @@ header {
     flex-wrap: wrap;
     gap: 50px;
     justify-content: center;
-    background-color: #111;
+    background-color: #f8f9fa;
 }
 
 .cards {
@@ -177,57 +187,58 @@ header {
 }
 
 .design-card {
-    background-color: #1a1a1a;
+    background-color: #ffffff;
     padding: 30px 20px;
     width: 250px;
     border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    box-shadow: 0 0 15px rgba(30, 144, 255, 0.2);
     text-align: center;
     transition: 0.3s;
 }
 
 .design-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+    box-shadow: 0 0 25px rgba(30, 144, 255, 0.4);
 }
 
 .design-card h3 {
     font-size: 20px;
     margin-bottom: 10px;
+    color: #1e90ff;
 }
 
 .design-card i {
     font-size: 30px;
-    color: #00d4ff;
+    color: #1e90ff;
     margin-bottom: 10px;
 }
 
 .design-card p {
-    color: #aaa;
+    color: #555;
     margin-bottom: 15px;
 }
 
 .design-card a {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #00d4ff;
-    color: #000;
+    background-color: #1e90ff;
+    color: #fff;
     border-radius: 5px;
     font-weight: 600;
     transition: 0.3s;
 }
 
 .design-card a:hover {
-    background-color: #00a1c6;
-    color: #fff;
+    background-color: #1565c0;
 }
 
+/* ---------- INTRODUCTION TEXT ---------- */
 .introduction-text {
     max-width: 600px;
 }
 
 .introduction-text p:first-child {
-    color: #00d4ff;
+    color: #1e90ff;
     font-weight: 500;
     margin-bottom: 10px;
 }
@@ -238,14 +249,14 @@ header {
 }
 
 .introduction-text p {
-    color: #ccc;
+    color: #555;
     font-size: 18px;
     line-height: 1.6;
 }
 
 /* ---------- FOOTER ---------- */
 footer {
-    background-color: #111;
+    background-color: #f8f9fa;
     padding: 50px;
     display: flex;
     justify-content: center;
@@ -253,17 +264,17 @@ footer {
 }
 
 .footer-email-intro p {
-    color: #00d4ff;
+    color: #1e90ff;
     font-weight: 500;
 }
 
 .footer-email-intro h6 {
-    color: #ccc;
+    color: #555;
     margin: 5px 0;
 }
 
 .footer-email-intro h3 {
-    color: #fff;
+    color: #333;
     margin-top: 10px;
     font-size: 20px;
 }
@@ -295,5 +306,9 @@ footer {
     #introduction {
         flex-direction: column;
         padding: 50px 20px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }
 }
