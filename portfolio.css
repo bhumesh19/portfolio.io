@@ -1,7 +1,7 @@
 /* ---------- IMPORT FONTS ---------- */
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700;800&display=swap");
 
-/* ---------- GLOBAL STYLING ---------- */
+/* ---------- GLOBAL ---------- */
 * {
     margin: 0;
     padding: 0;
@@ -112,44 +112,44 @@ header {
 /* ---------- SKILLS GRID ---------- */
 .body-part-2 {
     flex: 1;
-    min-width: 350px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 50px;
+    padding: 0 20px;
 }
 
 .skills-title {
     text-align: center;
-    font-size: 32px;
+    font-size: 28px;
     color: #1e90ff;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     font-weight: 600;
 }
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 15px;
     justify-items: center;
-    align-items: center;
     width: 100%;
-    max-width: 900px;
+    max-width: 500px;
 }
 
 .skill-card {
     background-color: #f0f4f8;
-    padding: 20px;
-    border-radius: 15px;
+    padding: 15px;
+    border-radius: 12px;
     text-align: center;
-    width: 120px;
+    width: 80px;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .skill-card img {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 10px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
     transition: transform 0.3s;
 }
 
@@ -157,12 +157,13 @@ header {
     display: block;
     margin-top: 5px;
     color: #333;
+    font-size: 12px;
     font-weight: 500;
 }
 
 .skill-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 15px rgba(30, 144, 255, 0.6);
+    transform: translateY(-5px);
+    box-shadow: 0 0 12px rgba(30, 144, 255, 0.6);
 }
 
 .skill-card:hover img {
@@ -280,169 +281,39 @@ footer {
 }
 
 /* ---------- RESPONSIVE ---------- */
-
-/* Tablet: 768px to 1024px */
 @media (max-width: 1024px) {
-    header {
-        flex-direction: column;
-        gap: 15px;
-        padding: 20px 30px;
-    }
-
-    .navbar-title h3 {
-        font-size: 26px;
-    }
-
-    #content-body {
-        flex-direction: column;
-        align-items: center;
-        padding: 60px 30px;
-    }
-
-    .body-title h1 {
-        font-size: 36px;
-        text-align: center;
-    }
-
-    .body-title p {
-        font-size: 16px;
-        text-align: center;
-    }
-
-    .body-part-2 {
-        margin-top: 50px;
-    }
-
-    .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        gap: 15px;
-    }
-
-    .skill-card {
-        width: 100px;
-        padding: 15px;
-    }
-
-    .skill-card img {
-        width: 50px;
-        height: 50px;
-    }
+    header { flex-direction: column; gap: 15px; padding: 20px 30px; }
+    .navbar-title h3 { font-size: 26px; }
+    #content-body { flex-direction: column; align-items: center; padding: 60px 30px; }
+    .body-title h1 { font-size: 36px; text-align: center; }
+    .body-title p { font-size: 16px; text-align: center; }
+    .skills-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 15px; }
+    .skill-card { width: 100px; padding: 15px; }
+    .skill-card img { width: 50px; height: 50px; }
 }
 
-/* Mobile: 480px to 767px */
 @media (max-width: 767px) {
-    header {
-        padding: 15px 20px;
-    }
-
-    .navbar-title {
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .navbar-title h3 {
-        font-size: 22px;
-    }
-
-    .social-media {
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: center;
-    }
-
-    #content-body {
-        padding: 40px 20px;
-    }
-
-    .body-title h1 {
-        font-size: 28px;
-    }
-
-    .body-title p {
-        font-size: 14px;
-    }
-
-    .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-        gap: 10px;
-    }
-
-    .skill-card {
-        width: 90px;
-        padding: 12px;
-    }
-
-    .skill-card img {
-        width: 45px;
-        height: 45px;
-    }
-
-    #introduction {
-        padding: 40px 20px;
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    .cards {
-        flex-direction: column;
-        gap: 20px;
-        align-items: center;
-    }
-
-    .design-card {
-        width: 90%;
-        padding: 20px;
-    }
-
-    .introduction-text {
-        max-width: 100%;
-    }
+    header { padding: 15px 20px; }
+    .navbar-title { flex-direction: column; align-items: center; gap: 5px; }
+    .navbar-title h3 { font-size: 22px; }
+    .social-media { flex-wrap: wrap; gap: 10px; justify-content: center; }
+    #content-body { padding: 40px 20px; }
+    .body-title h1 { font-size: 28px; }
+    .body-title p { font-size: 14px; }
+    .skills-grid { grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); gap: 10px; max-width: 100%; }
+    .skill-card { width: 70px; padding: 10px; }
+    .skill-card img { width: 35px; height: 35px; }
+    .cards { flex-direction: column; gap: 20px; align-items: center; }
+    .design-card { width: 90%; padding: 20px; }
+    .introduction-text { max-width: 100%; }
+    .skills-title { font-size: 24px; margin-bottom: 20px; }
 }
 
-/* Extra Small Mobile: <480px */
 @media (max-width: 479px) {
-    header {
-        padding: 10px 15px;
-    }
-
-    .navbar-title h3 {
-        font-size: 20px;
-    }
-
-    .body-title h1 {
-        font-size: 24px;
-    }
-
-    .body-title p {
-        font-size: 13px;
-    }
-
-    .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-        gap: 8px;
-    }
-
-    .skill-card {
-        width: 80px;
-        padding: 10px;
-    }
-
-    .skill-card img {
-        width: 40px;
-        height: 40px;
-    }
-
-    .design-card {
-        width: 95%;
-        padding: 15px;
-    }
-
-    .introduction-text h2 {
-        font-size: 24px;
-    }
-
-    .introduction-text p {
-        font-size: 14px;
-    }
+    .body-title h1 { font-size: 24px; }
+    .body-title p { font-size: 13px; }
+    .skills-title { font-size: 20px; }
+    .skill-card span { font-size: 10px; }
+    .design-card h3 { font-size: 18px; }
+    .design-card a { padding: 8px 15px; font-size: 14px; }
 }
