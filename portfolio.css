@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap");
 
-/* ---------- GLOBAL RESET ---------- */
 * {
   margin: 0;
   padding: 0;
@@ -9,117 +8,101 @@
 
 body {
   font-family: "Raleway", sans-serif;
-  background: linear-gradient(135deg, #0d0d0d, #1c1c1c);
+  background: linear-gradient(135deg, #0f172a, #1e293b);
   color: #fff;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
-/* ---------- CONTAINER ---------- */
 .container {
   position: relative;
-  width: 450px;
-  height: 450px;
+  width: 80vmin;
+  height: 80vmin;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* ---------- CENTER IMAGE ---------- */
-.center-image {
+.center-circle {
   position: absolute;
-  width: 180px;
-  height: 180px;
+  width: 150px;
+  height: 150px;
+  background: url('hoodie-guy.png') no-repeat center/cover; /* Replace with your hoodie image */
   border-radius: 50%;
-  overflow: hidden;
-  z-index: 10;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-}
-.center-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  z-index: 2;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
-/* ---------- ORBIT CIRCLE ---------- */
 .orbit {
   position: absolute;
-  width: 350px;
-  height: 350px;
-  border: 1px dashed rgba(255, 255, 255, 0.15);
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   animation: rotate 20s linear infinite;
 }
 
-/* ---------- SKILL ICONS ---------- */
 .skill {
   position: absolute;
-  width: 60px;
-  height: 60px;
-  background: #222;
+  width: 70px;
+  height: 70px;
+  background: #2563eb;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
 }
 
-.skill img {
-  width: 60%;
-  height: 60%;
-  object-fit: contain;
-}
-
+/* Hover effect */
 .skill:hover {
   transform: scale(1.2);
-  background: #333;
 }
 
-/* ---------- ANIMATION ---------- */
+/* Skill positions around orbit (6 items example) */
+.skill:nth-child(1) {
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.skill:nth-child(2) {
+  top: 20%;
+  right: 0%;
+  transform: translate(50%, -50%);
+}
+.skill:nth-child(3) {
+  bottom: 20%;
+  right: 0%;
+  transform: translate(50%, 50%);
+}
+.skill:nth-child(4) {
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+.skill:nth-child(5) {
+  bottom: 20%;
+  left: 0%;
+  transform: translate(-50%, 50%);
+}
+.skill:nth-child(6) {
+  top: 20%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+}
+
 @keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* ---------- RESPONSIVENESS ---------- */
-@media (max-width: 768px) {
-  .container {
-    width: 300px;
-    height: 300px;
+  from {
+    transform: rotate(0deg);
   }
-  .center-image {
-    width: 120px;
-    height: 120px;
-  }
-  .orbit {
-    width: 240px;
-    height: 240px;
-  }
-  .skill {
-    width: 45px;
-    height: 45px;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    width: 240px;
-    height: 240px;
-  }
-  .center-image {
-    width: 90px;
-    height: 90px;
-  }
-  .orbit {
-    width: 200px;
-    height: 200px;
-  }
-  .skill {
-    width: 40px;
-    height: 40px;
+  to {
+    transform: rotate(360deg);
   }
 }
