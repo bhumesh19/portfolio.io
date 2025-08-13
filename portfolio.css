@@ -1122,3 +1122,57 @@ body::selection {
     font-size: 12px;
   }
 }
+
+/* Large Tablets & Small Laptops */
+@media (max-width: 1200px) {
+  .circle {
+    left: 150px;
+    top: 350px;
+    width: 80px;
+    height: 80px;
+  }
+  .circle span {
+    transform: rotateY(calc(var(--i) * calc(360deg / 15))) translateZ(220px);
+  }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+  .circle {
+    left: 80px;
+    top: 220px;
+    width: 70px;
+    height: 70px;
+  }
+  .circle span {
+    transform: rotateY(calc(var(--i) * calc(360deg / 15))) translateZ(160px);
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 768px) {
+  .circle {
+    left: 50%;
+    top: 150px;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+  }
+  .circle span {
+    transform: rotateY(calc(var(--i) * calc(360deg / 15))) translateZ(120px);
+  }
+}
+
+/* Small Mobiles */
+@media (max-width: 480px) {
+  .circle {
+    left: 50%;
+    top: 120px;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+  }
+  .circle span {
+    transform: rotateY(calc(var(--i) * calc(360deg / 15))) translateZ(90px);
+  }
+}
