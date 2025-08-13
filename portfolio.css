@@ -1,108 +1,356 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap");
+/* portfolio.css — complete responsive rewrite
+   Keeps original HTML classes: #header, #content-body, .hoodie-guy, .circle, .circle span, etc.
+   - Responsive orbit that scales translateZ with screen size
+   - Icons remain upright while orbiting
+   - Pause-on-hover, hover styles, layout improvements
+*/
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* -------------------------
+   Fonts & variables
+   ------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&family=Source+Code+Pro:wght@200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  /* colors */
+  --bg-1: #2d2e32;
+  --bg-2: #25262a;
+  --accent: #64f4ac;
+  --muted: #7c7d81;
+  --text: #fefefe;
+
+  /* layout */
+  --page-max-width: 1200px;
+  --content-padding: 24px;
+
+  /* orbit defaults (desktop) */
+  --orbit-size: 520px;   /* diameter of orbit area */
+  --hoodie-size: 520px;  /* hoodie image size */
+  --translate-z: 300px;  /* how far icons are from center in 3D */
+  --icon-size: 75px;
+  --orbit-speed: 40s;
+  --items: 15;           /* number of items around the circle */
 }
 
+/* quick reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 body {
   font-family: "Raleway", sans-serif;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: linear-gradient(180deg, var(--bg-1), #161618 80%);
+  color: var(--text);
+  line-height: 1.4;
   min-height: 100vh;
-  overflow: hidden;
 }
 
-.container {
+/* -------------------------
+   Header
+   ------------------------- */
+#header {
+  padding: 18px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(45,46,50,0.46);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* title */
+.navbar-title { display:flex; align-items:center; gap:6px; }
+.title-first-name {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text);
+  letter-spacing: 0.2px;
+}
+.title-last-name {
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 20px;
+}
+
+/* social */
+.social-media { display:flex; gap:14px; align-items:center; list-style:none; }
+.social-media li { display:flex; gap:8px; align-items:center; font-size:13px; }
+.social-media a { color:var(--text); text-decoration:none; transition: color .18s ease; }
+.social-media a:hover { color: var(--accent); }
+
+/* -------------------------
+   Main content layout
+   ------------------------- */
+#content-body {
+  width: min(100%, var(--page-max-width));
+  margin: 40px auto;
+  padding: 0 clamp(16px, 4vw, 48px);
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* left text column */
+.body-part-1 {
+  flex: 1 1 420px;
+  min-width: 260px;
+}
+.developer-intro p {
+  display:inline-block;
+  padding:6px 10px;
+  background: var(--accent);
+  color: #062522;
+  border-radius:5px;
+  font-weight:700;
+  font-size:13px;
+  margin-bottom:10px;
+}
+.body-title h1 {
+  font-size: clamp(26px, 4.0vw, 40px);
+  margin: 12px 0;
+  letter-spacing:-0.6px;
+}
+.body-title p { color: var(--muted); font-size: 15px; max-width:44ch; }
+
+/* right visual column */
+.body-part-2 {
+  flex: 0 0 var(--orbit-size);
   position: relative;
-  width: 80vmin;
-  height: 80vmin;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-width: 320px;
+  height: var(--orbit-size);
 }
 
-.center-circle {
+/* decorative background circle */
+.background-circle {
   position: absolute;
-  width: 150px;
-  height: 150px;
-  background: url('hoodie-guy.png') no-repeat center/cover; /* Replace with your hoodie image */
+  width: calc(var(--orbit-size) * 0.98);
+  height: calc(var(--orbit-size) * 0.98);
   border-radius: 50%;
-  z-index: 2;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+  background: radial-gradient(circle at 30% 20%, rgba(100,244,172,0.06), transparent 18%),
+              radial-gradient(circle at 70% 80%, rgba(97,175,255,0.03), transparent 20%);
+  box-shadow: 0 8px 50px rgba(0,0,0,0.6);
+  z-index: 1;
 }
 
-.orbit {
+/* hoodie guy center */
+.hoodie-guy {
   position: absolute;
+  width: var(--hoodie-size);
+  height: var(--hoodie-size);
+  background-image: url("assets/Hoodie-guy.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  pointer-events: none; /* icons on top should receive hover */
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+}
+
+/* -------------------------
+   3D orbiting circle
+   ------------------------- */
+.circle {
+  --items: var(--items);
+  position: absolute;
+  width: var(--orbit-size);
+  height: var(--orbit-size);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
+  perspective: 1200px;
+  animation: animateCircle linear infinite;
+  animation-duration: var(--orbit-speed);
+  z-index: 3;
+  pointer-events: auto;
+}
+
+/* pause on hover for better UX */
+.circle:hover {
+  animation-play-state: paused;
+}
+
+/* each slot */
+.circle span {
+  --i: 0; /* overwritten by inline style --i */
+  --angle: calc(360deg / var(--items));
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  transform-style: preserve-3d;
+  /* place at correct angle then push outward in z-axis */
+  transform: rotateY(calc(var(--i) * var(--angle))) translateZ(var(--translate-z)) translate(-50%, -50%);
+  display: block;
+}
+
+/* icon image inside span - keep upright by applying inverse rotation */
+.circle span img {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  object-fit: contain;
+  display:block;
+  border-radius: 10px;
+  transition: transform .28s ease, box-shadow .28s ease, filter .28s ease;
+  /* keep upright visually: rotate back by same Y rotation */
+  transform: rotateY(calc(-1 * var(--i) * var(--angle)));
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+}
+
+/* hover effect for icons */
+.circle span img:hover {
+  transform: scale(1.18) rotateY(calc(-1 * var(--i) * var(--angle)));
+  box-shadow: 0 18px 40px rgba(97,175,255,0.12);
+  cursor: pointer;
+}
+
+/* small indicator circle behind each icon (optional look) */
+.circle span::before {
+  content: "";
+  position: absolute;
+  inset: 50% auto auto 50%;
+  translate: -50% -50%;
+  width: calc(var(--icon-size) * 1.04);
+  height: calc(var(--icon-size) * 1.04);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.02);
+  z-index: -1;
+}
+
+/* default animation keyframes */
+@keyframes animateCircle {
+  from { transform: translate(-50%, -50%) rotateY(0deg) rotateX(10deg) translateY(-10px); }
+  to   { transform: translate(-50%, -50%) rotateY(360deg) rotateX(10deg) translateY(-10px); }
+}
+
+/* -------------------------
+   Intro / cards / footer (kept & improved responsiveness)
+   ------------------------- */
+#introduction {
+  width: min(100%, var(--page-max-width));
+  margin: 40px auto;
+  padding: clamp(20px, 4vw, 100px);
+  display:flex;
+  gap: 32px;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: var(--bg-2);
+  border-radius: 12px;
+}
+
+.cards { flex: 1 1 320px; display:flex; flex-direction:column; gap:16px; }
+.design-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.008));
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.design-card h3 { margin:0; font-weight:600 }
+.design-card p { color:var(--muted); margin-top:8px; font-weight:600 }
+
+/* introduction text */
+.introduction-text { flex: 1 1 420px; padding-right: 18px; }
+.introduction-text p:first-child { color:var(--muted); font-weight:700; margin-bottom:6px; }
+.introduction-text h2 { margin:6px 0 12px; font-size: clamp(20px, 3.6vw, 32px); }
+
+/* footer */
+#footer {
   width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  animation: rotate 20s linear infinite;
+  background: var(--bg-2);
+  padding: clamp(28px, 4vw, 80px);
+  margin-top: 28px;
 }
+.footer-right { display:flex; justify-content:flex-end; }
+.footer-email-intro { text-align:right; color:var(--muted); }
 
-.skill {
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  background: #2563eb;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.8rem;
-  font-weight: bold;
-  text-align: center;
-  color: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s;
-}
+/* -------------------------
+   Responsive adjustments
+   ------------------------- */
 
-/* Hover effect */
-.skill:hover {
-  transform: scale(1.2);
-}
-
-/* Skill positions around orbit (6 items example) */
-.skill:nth-child(1) {
-  top: 0%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.skill:nth-child(2) {
-  top: 20%;
-  right: 0%;
-  transform: translate(50%, -50%);
-}
-.skill:nth-child(3) {
-  bottom: 20%;
-  right: 0%;
-  transform: translate(50%, 50%);
-}
-.skill:nth-child(4) {
-  bottom: 0%;
-  left: 50%;
-  transform: translate(-50%, 50%);
-}
-.skill:nth-child(5) {
-  bottom: 20%;
-  left: 0%;
-  transform: translate(-50%, 50%);
-}
-.skill:nth-child(6) {
-  top: 20%;
-  left: 0%;
-  transform: translate(-50%, -50%);
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
+/* Large laptops */
+@media (max-width: 1200px) {
+  :root {
+    --orbit-size: 420px;
+    --hoodie-size: 420px;
+    --translate-z: 220px;
+    --icon-size: 65px;
+    --orbit-speed: 30s;
   }
-  to {
-    transform: rotate(360deg);
-  }
+  .body-part-2 { flex: 0 0 var(--orbit-size); height: var(--orbit-size); }
 }
+
+/* Tablets */
+@media (max-width: 992px) {
+  :root{
+    --orbit-size: 340px;
+    --hoodie-size: 340px;
+    --translate-z: 180px;
+    --icon-size: 56px;
+    --orbit-speed: 26s;
+  }
+  #content-body { padding: 12px 24px; gap: 20px; }
+  .hoodie-guy { width: var(--hoodie-size); height: var(--hoodie-size); }
+  .background-circle { width: calc(var(--orbit-size) * 0.98); height: calc(var(--orbit-size) * 0.98); }
+  .body-part-2 { min-width: 320px; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  :root {
+    --orbit-size: 280px;
+    --hoodie-size: 240px;
+    --translate-z: 120px;
+    --icon-size: 48px;
+    --orbit-speed: 22s;
+  }
+  #content-body {
+    flex-direction: column-reverse;
+    align-items:center;
+    padding: 18px;
+    gap:24px;
+  }
+  .body-part-1 { text-align:center; }
+  .hoodie-guy { width: var(--hoodie-size); height: var(--hoodie-size); top:50%; left:50%; transform: translate(-50%,-50%); }
+  .circle { width: var(--orbit-size); height: var(--orbit-size); }
+  .background-circle { display:block; width: calc(var(--orbit-size) * 0.98); height: calc(var(--orbit-size) * 0.98); }
+  #introduction { flex-direction: column; padding: 20px; }
+  .introduction-text { padding-right:0; text-align:center; }
+  .footer-right { justify-content:center; text-align:center; }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  :root{
+    --orbit-size: 220px;
+    --hoodie-size: 180px;
+    --translate-z: 90px;
+    --icon-size: 40px;
+    --orbit-speed: 18s;
+  }
+  h1 { font-size: 20px; }
+  .developer-intro p { font-size: 12px; padding: 4px 8px; }
+  .circle span::before { display:none; } /* reduce visual clutter */
+}
+
+/* -------------------------
+   Accessibility tweaks
+   ------------------------- */
+.circle span img, .circle span img:focus { outline: none; }
+a { color: inherit; text-decoration: none; }
+
+/* -------------------------
+   Small helpers (optional)
+   ------------------------- */
+/* You can temporarily slow rotation by adding `.slow` to .circle */
+.circle.slow { animation-duration: calc(var(--orbit-speed) * 1.8) !important; }
+
+/* End of file */
